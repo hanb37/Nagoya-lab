@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 목록</title>
+<title>掲示板</title>
 <%@ include file="../include/member_header.jsp" %>
 <script>
     $(document).ready(function(){
         $("#btnWrite").click(function(){
-            // 페이지 주소 변경(이동)
+        	//ページアドレス更新
             location.href = "${path}/board/write.do";
         });
     });
@@ -18,11 +18,11 @@
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
-<h2>게시글 목록</h2>
-<button type="button" id="btnWrite">글쓰기</button>
+<h2>掲示板</h2>
+<button type="button" id="btnWrite">投稿</button>
 	<c:set var="i" value="0" />
 	<c:set var="j" value="7" />
-<table border="1" style="width:1000px height:1000px">
+<table border="1" style="width:500px">
     <c:choose>
 			<c:when test="${list != null && fn:length(list) > 0 }">
 				<c:forEach items="${list}" var="list" varStatus="status">
