@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/dependency/
+web: java -jar target/chubu-1.0.war
