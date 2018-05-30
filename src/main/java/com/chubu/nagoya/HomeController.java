@@ -1,4 +1,4 @@
-/*package com.chubu.nagoya;
+package com.chubu.nagoya;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -19,10 +19,10 @@ public class HomeController {
 	@RequestMapping(value = "/")
 	public String main(Model model) throws Exception{
 		model.addAttribute("msg", "本日もご活躍、誠にありがとうございます。");
-		return "main";
+		return "index";
 	}
 	
-	 @RequestMapping(value = "home.do", method = RequestMethod.GET)
+	 @RequestMapping(value = "index.do", method = RequestMethod.GET)
 	    public String home(Locale locale, Model model) throws Exception {
 	        logger.info("Welcome home! The client locale is {}.", locale);
 	        
@@ -36,10 +36,9 @@ public class HomeController {
 	        // => servlet-context.xml
 	        // <beans:property name="prefix" value="/WEB-INF/views/" />
 	        // <beans:property name="suffix" value=".jsp" />
-	        return "home";
+	        return "index";
 	    }
 
 	
 	
 }
-*/
