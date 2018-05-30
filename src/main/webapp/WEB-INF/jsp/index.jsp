@@ -3,10 +3,10 @@
 <html>
 <head>
 	<title>Home</title>
-<%@ include file="WEB-INF/jsp/include/member_header.jsp" %>
+<%@ include file="include/member_header.jsp" %>
 </head>
 <body>
-<%@ include file="WEB-INF/jsp/include/member_menu.jsp" %>
+<%@ include file="include/member_menu.jsp" %>
 <h1>
 	Hello world!  
 </h1>
