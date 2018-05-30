@@ -13,7 +13,7 @@
 			value="org.postgresql.Driver" />
 		<!-- アクセス文字列にlog4jdbcが追加 -->
 		<property name="url"
-			value="jdbc:postgresql://ec2-75-101-142-91.compute-1.amazonaws.com:5432/d9bv1lajggfm55/public?sslfactory=org.postgresql.ssl.NonValidatingFactory&amp;ssl=true;"
+			value="jdbc:postgresql://ec2-75-101-142-91.compute-1.amazonaws.com:5432/d9bv1lajggfm55?sslmode=require"
 			 />
 		<property name="username" value="uwhcxwivmbsghr" />
 		<property name="password" value="cbb3d813c06ac51756521af62bdde2df408ff1dccb05dcbb1be2ec7b5df16a6a" />
