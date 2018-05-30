@@ -4,29 +4,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시글 작성</title>
+<title>投稿画面</title>
 <%@ include file="../include/member_header.jsp" %>
 <script>
     $(document).ready(function(){
         $("#btnDelete").click(function(){
-            if(confirm("삭제하시겠습니까?")){
+            if(confirm("削除してもよろしいですか？")){
                 document.form1.action = "${path}/board/delete.do";
                 document.form1.submit();
             }
         });
         
         $("#btnUpdete").click(function(){
-            //var title = document.form1.title.value; ==> name속성으로 처리할 경우
+            //var title = document.form1.title.value; ==> nameで処理する場合
             //var content = document.form1.content.value;
             var brdWriter = $("#brdWriter").val();
             var brdComment = $("#brdComment").val();
             if(brdWriter == ""){
-                alert("제목을 입력하세요");
+                alert("タイトルを入力してください。");
                 document.form1.brdComment.focus();
                 return;
             }
             if(brdComment == ""){
-                alert("내용을 입력하세요");
+                alert("投稿内容を入力してください。");
                 document.form1.brdComment.focus();
                 return;
             }

@@ -1,42 +1,53 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-    xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <!-- ドライバークラス名を変更 -->
-        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
-        <!-- アクセス文字列にlog4jdbcが追加 -->
-        <property name="url" value="jdbc:log4jdbc:mysql://localhost/dump"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
-    </bean>
-    
-    <!-- Apache DBCP 設定 -->
-    <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
-            <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
-            <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" /> 
-            <property name="username" value="java" /> <property name="password" value="java1234"/> 
-    </bean> -->
-    
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- ドライバークラス名を変更 -->
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<!-- アクセス文字列にlog4jdbcが追加 -->
+		<property name="url"
+			value="jdbc:log4jdbc:mysql://localhost/dump" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+
+	<!-- Apache DBCP 設定 -->
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+		destroy-method="close"> <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" /> <property 
+		name="username" value="java" /> <property name="password" value="java1234"/> 
+		</bean> -->
+
 	<!-- SqlSessionFactory オブジェクト挿入 -->
-    <!-- sqlSessionFactory는 dataSourceを参照 -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <!-- mybtis 環境設定ファイルの位置を参照 -->
-        <property name="configLocation" value="classpath:/mybatis-config.xml"/>
-        <!-- mybatis mapperの位置とネーミングルール設定 -->
-        <!-- classpath : src/main/resourcesを意味 -->
-        <!-- ** : ディレクトリを意味 -->
-        <!-- * : ファイル名を意味 -->
-        <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>
-    </bean>
-    
-    <!-- SqlSession オブジェクト挿入 -->
-    <!-- sqlSessionは sqlSessionFactoryを参照 -->
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
-    </bean>
+	<!-- sqlSessionFactory는 dataSourceを参照 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- mybtis 環境設定ファイルの位置を参照 -->
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
+		<!-- mybatis mapperの位置とネーミングルール設定 -->
+		<!-- classpath : src/main/resourcesを意味 -->
+		<!-- ** : ディレクトリを意味 -->
+		<!-- * : ファイル名を意味 -->
+		<property name="mapperLocations"
+			value="classpath:mappers/**/*Mapper.xml" />
+	</bean>
+
+	<!-- SqlSession オブジェクト挿入 -->
+	<!-- sqlSessionは sqlSessionFactoryを参照 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+	</bean>
 </beans>
