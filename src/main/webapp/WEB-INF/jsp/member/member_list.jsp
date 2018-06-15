@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 목록</title>
+<title>会社員一覧</title>
 <%@ include file="../include/member_header.jsp" %>
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
-    <h2>회원 목록</h2>
-<input type="button" value="회원등록" onclick="location.href='${path}/member/write.do'">
-    <table border="1" width="700px">
+    <h2>会社員一覧</h2>
+<input type="button" value="登録" onclick="location.href='${path}/member/write.do'">
+    <table border="1" style = "width : 700px">
         <tr>
-            <th>아이디</th>
-            <th>이름</th>
-            <th>이메일</th>
-            <th>회원가입일자</th>
+            <th>ID</th>
+            <th>名前</th>
+            <th>メール</th>
+            <th>登録日時</th>
         </tr>
         <c:forEach var="row" items="${list}">
         <tr>

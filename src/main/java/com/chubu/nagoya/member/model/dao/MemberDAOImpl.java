@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -38,7 +37,6 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.update("member.updateMember", vo);
 	}
 	
-	// 06. 회원 정보 수정 및 삭제를 위한 비밀번호 체크
     @Override
     public boolean checkPw(String userId, String userPw) {
         boolean result = false;

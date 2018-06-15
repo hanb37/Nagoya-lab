@@ -17,4 +17,5 @@ public interface MemberService {
 	public void updateMember(MemberVO vo);
 	
 	public boolean checkPw(String userId, String userPw);
+
 }

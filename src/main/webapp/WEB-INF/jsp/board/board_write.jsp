@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시글 작성</title>
+<title>投稿画面</title>
 <%@ include file="../include/member_header.jsp"%>
 <script>
 	$(document).ready(function() {
 		$("#btnSave").click(function() {
-			//var title = document.form1.title.value; ==> name속성으로 처리할 경우
+			//var title = document.form1.title.value; ==> nameタイプで処理する場合
 			//var content = document.form1.content.value;
 			//var writer = document.form1.writer.value;
 			var brdWriter = $("#brdWriter").val();
@@ -25,7 +25,7 @@
 				return;
 			}
 			
-			// 폼에 입력한 데이터를 서버로 전송
+			// Formで入力したデータをサーバーへ伝送
 			document.form1.submit();
 		});
 	});
@@ -33,19 +33,21 @@
 </head>
 <body>
 	<%@ include file="../include/member_menu.jsp"%>
-	<h2>게시글 작성</h2>
+	<h2>投稿画面</h2>
 	<form name="form1" method="post" action="${path}/board/insert.do">
 		<table border="1" style="width:600px">
 		<tr>
 			<td>投稿者</td>
-			<td><input type="text" name="brdWriter" size="20" maxlength="20"></td>
+			<td><input type="text" name="brdWriter" id= "brdWriter" size="20" maxlength="20"></td>
 		</tr>
 		<tr>
 			<td>コメント</td>
-			<td><textarea name="brdComment" rows="5" cols="60"></textarea></td>
+			<td><textarea name="brdComment" id= "brdComment" rows="5" cols="60"></textarea></td>
 		</tr>
 	</table>
-	<a href="#" onclick="form1.submit()">保存</a>
+	<button id="btnSave">保存</button>
+<!-- 	<a href="#" onclick="form1.submit()">保存</a>  -->
+	 <a href="${path}/board/list.do">キャンセル</a> 
 	</form>
 </body>
 </html>

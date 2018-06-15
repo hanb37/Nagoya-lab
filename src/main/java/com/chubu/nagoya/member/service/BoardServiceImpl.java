@@ -1,5 +1,6 @@
 package com.chubu.nagoya.member.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,7 +8,9 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.chubu.nagoya.member.model.dao.BoardDAO;
+import com.chubu.nagoya.member.model.dao.MessageDAO;
 import com.chubu.nagoya.member.model.dto.BoardVO;
+import com.chubu.nagoya.member.model.dto.MessageInfo;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -15,23 +18,28 @@ public class BoardServiceImpl implements BoardService{
 	@Inject
 	BoardDAO boardDao;
 	
+	@Inject
+	MessageDAO messageDao;
+	
 	@Override
-	public List<BoardVO> listAll() throws Exception {
-		return boardDao.listAll();
+	public List<BoardVO> listAll(Date date) throws Exception {
+		return boardDao.listAll(date);
 	}
-
-	// 01. 게시글쓰기
+	
+	@Override
+	public  List<MessageInfo> listMessages(Date date) throws Exception {
+		
+		return messageDao.listMessages(date);
+	}
+	
     @Override
     public void create(BoardVO vo) throws Exception {
         String brdWriter = vo.getBrdWriter();
         String brdComment = vo.getBrdComment();
-        // *태그문자 처리 (< ==> &lt; > ==> &gt;)
-        // replace(A, B) A를 B로 변경
+
         brdWriter = brdWriter.replace("<", "&lt;");
         brdWriter = brdWriter.replace("<", "&gt;");
-        // *공백문자 처리
-        brdWriter = brdWriter.replace("  ",    "&nbsp;&nbsp;");
-        // *줄바꿈 문자처리
+
         brdComment = brdComment.replace("\n", "<br>");
         vo.setBrdWriter(brdWriter);
         vo.setBrdComment(brdComment);

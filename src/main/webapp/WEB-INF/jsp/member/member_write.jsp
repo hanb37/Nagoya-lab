@@ -10,7 +10,7 @@
 <%@ include file="../include/member_menu.jsp" %>
     <h2>会員登録</h2>
     <form name="form1" method="post" action="${path}/member/insert.do">
-        <table border="1" width="400px">
+        <table border="1">
             <tr>
                 <td>ID</td>
                 <td><input name="userId"></td>

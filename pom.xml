@@ -107,17 +107,15 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-
 		<!-- Mysql -->
 		<!-- <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
 			<version>5.1.21</version> </dependency> -->
-
+		<!-- PostgreSQL -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.2.2</version>
 		</dependency>
-
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -140,6 +138,19 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.11</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
+		
+		
 	</dependencies>
 	<build>
 		<plugins>

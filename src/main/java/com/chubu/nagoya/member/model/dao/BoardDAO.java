@@ -1,12 +1,13 @@
 package com.chubu.nagoya.member.model.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import com.chubu.nagoya.member.model.dto.BoardVO;
 
 public interface BoardDAO {
 	
-	public List<BoardVO> listAll() throws Exception;
+	public List<BoardVO> listAll(Date date) throws Exception;
 	
 	public void create(BoardVO vo) throws Exception;
 	

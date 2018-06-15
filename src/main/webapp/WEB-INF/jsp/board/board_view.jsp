@@ -25,41 +25,35 @@
                 document.form1.brdComment.focus();
                 return;
             }
-            if(brdComment == ""){
-                alert("投稿内容を入力してください。");
-                document.form1.brdComment.focus();
-                return;
-            }
-            
-            document.form1.action="${path}/board/update.do"
-            // 폼에 입력한 데이터를 서버로 전송
-            document.form1.submit();
+			
+            document.form1.action = "${path}/board/update.do";
+			document.form1.submit();
         });
     });
 </script>
 </head>
 <body>
 <%@ include file="../include/member_menu.jsp" %>
-<h2>게시글 보기</h2>
+<h2>詳細画面</h2>
 <form name="form1" method="post">
-    <div>        <!-- 원하는 날짜형식으로 출력하기 위해 fmt태그 사용 -->
-        작성일자 : <fmt:formatDate value="${dto.brdDate}" pattern="yyyy-MM-dd a HH:mm:ss"/>
-                <!-- 날짜 형식 => yyyy 4자리연도, MM 월, dd 일, a 오전/오후, HH 24시간제, hh 12시간제, mm 분, ss 초 -->
+    <div>        <!-- 日付をカスタマイズする為fmtタッグを使用 -->
+        作成日付 : <fmt:formatDate value="${dto.brdDate}" pattern="yyyy-MM-dd a HH:mm:ss"/>
+                <!-- 日付形式 => yyyy 4桁年度, MM 月, dd 日, a 午前/午後, HH 24時間制, hh 12時間制, mm 分, ss 秒 -->
     </div>
     <div>
-        제목
-        <input name="brdWriter" id="brdWriter" size="80" value="${dto.brdWriter}" placeholder="제목을 입력해주세요">
+        投稿者名
+        <input name="brdWriter" id="brdWriter" size="80" value="${dto.brdWriter}" placeholder="投稿者名を入力してください。">
     </div>
     <div>
-        내용
-        <textarea name="brdComment" id="brdComment" rows="4" cols="80" placeholder="내용을 입력해주세요">${dto.brdComment}</textarea>
+        内容
+        <textarea name="brdComment" id="brdComment" rows="4" cols="80" placeholder="内容を入力してください">${dto.brdComment}</textarea>
     </div>
     
     <div style="width:650px; text-align: center;">
-        <!-- 게시물번호를 hidden으로 처리 -->
+        <!-- 投稿番号をhiddenで処理 -->
         <input type="hidden" name="brdNo" value="${dto.brdNo}">
-        <button type="button" id="btnUpdete">수정</button>
-        <button type="button" id="btnDelete">삭제</button>
+        <button type="button" id="btnUpdete">編集</button>
+        <button type="button" id="btnDelete">削除</button>
     </div>
 </form>
 </body>

@@ -3,15 +3,15 @@ package com.chubu.nagoya.member.model.dto;
 import java.util.Date;
 
 public class BoardVO {
-	private String brdNo;
+	private int brdNo;
 	private String brdComment;
 	private String brdWriter;
 	private Date brdDate;
 	
-	public String getBrdNo() {
+	public int getBrdNo() {
 		return brdNo;
 	}
-	public void setBrdNo(String brdNo) {
+	public void setBrdNo(int brdNo) {
 		this.brdNo = brdNo;
 	}
 	public String getBrdComment() {

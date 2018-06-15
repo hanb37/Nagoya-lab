@@ -1,5 +1,6 @@
 package com.chubu.nagoya.member.model.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,8 +17,8 @@ public class BoardDAOImpl implements BoardDAO{
 	SqlSession sqlSession;
 	
 	@Override
-	public List<BoardVO> listAll() throws Exception {
-		return sqlSession.selectList("board.listAll");
+	public List<BoardVO> listAll(Date date) throws Exception {
+		return sqlSession.selectList("board.listAll",date);
 	}
 
 	@Override
