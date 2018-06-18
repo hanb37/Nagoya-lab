@@ -6,19 +6,6 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<!-- ドライバークラス名を変更 -->
-		<property name="driverClassName"
-			value="org.postgresql.Driver" />
-		<!-- アクセス文字列にlog4jdbcが追加 -->
-		<property name="url"
-			value="jdbc:postgresql://localhost:5432/demo"
-			 />
-		<property name="username" value="postgres" />
-		<property name="password" value="postgres" />
-	</bean>
-
 <!-- 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		ドライバークラス名を変更
@@ -26,18 +13,22 @@
 			value="org.postgresql.Driver" />
 		アクセス文字列にlog4jdbcが追加
 		<property name="url"
-			value="jdbc:postgresql://ec2-23-23-247-245.compute-1.amazonaws.com:5432/d7bm9ime45iqpg?sslmode=require"
+			value="jdbc:postgresql://localhost:5432/demo"
 			 />
-		<property name="username" value="mfpifdkrgeuyam" />
-		<property name="password" value="df557a290610ddeb1cf020040baadd2b7d7dad32890ecc322e6f8892343a809b" />
+		<property name="username" value="postgres" />
+		<property name="password" value="postgres" />
 	</bean> -->
 
-	<!-- Apache DBCP 設定 -->
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
-		destroy-method="close"> <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" /> <property 
-		name="username" value="java" /> <property name="password" value="java1234"/> 
-		</bean> -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="org.postgresql.Driver" />
+		<property name="url"
+			value="jdbc:postgresql://ec2-54-204-46-236.compute-1.amazonaws.com"
+			 />
+		<property name="username" value="jmbndngrulhmfs" />
+		<property name="password" value="ff2380a9b57252383432b896f0d55db6f8144aa5734ce0da3743d9c542193d05" />
+	</bean> 
 
 	<!-- SqlSessionFactory オブジェクト挿入 -->
 	<!-- sqlSessionFactory는 dataSourceを参照 -->
