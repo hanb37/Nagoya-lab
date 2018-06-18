@@ -87,6 +87,7 @@
 		background-color:  #ffe6cc;	
 	}
 	.trHour{
+		border: 2px solid 	#3366ff;
 	}
 	
 	.cell0{
@@ -101,14 +102,14 @@
 		<h3>掲示板</h3>
 		<div class = "date"> 
 			<c:url var="link" value="next.do">
-				<c:param name="day" value="${date }back"/><br>
+				<c:param name="day" value="${date }前"/><br>
 			</c:url>
 			<a href="${link}">Back</a>
 			
 			<c:out value="${date }"/>
 			
 			<c:url var="link" value="next.do">
-				<c:param name="day" value="${date }next"/><br>
+				<c:param name="day" value="${date }次"/><br>
 			</c:url>
 			<a href="${link}">Next</a>
 			<button type="button" id="btnWrite">投稿</button>
@@ -149,10 +150,10 @@
 		<c:set var="RoomSeminar" value="セミナールーム" />
 		
 		<table id = "table-meeting">	
-			<tr class ="trHour">
-				<td colspan="${timeSpan}">時間</td>
+			<tr >
+				<td colspan="${timeSpan}" class ="trHour">時間</td>
 				<c:forEach var = "j" begin = "${startTime}" end = "${endTime}" >
-		        	<td colspan="${timeSpan}">${j}:00</td>
+		        	<td colspan="${timeSpan}" class ="trHour">${j}:00</td>
 		        </c:forEach>
 			</tr>
 
@@ -170,9 +171,7 @@
 							<c:when test = "${(j == (numStart * 2)) && (room eq RoomSeminar)}">	
 								<c:set var="rangeTimeMessage" value="${(numEnd - numStart)*timeSpan}"/>
 								<td colspan="${rangeTimeMessage}" class = "cell0">
-									<c:out value="${numStart}" /> 
-									<c:out value="${numEnd}" />
-									<c:out value="${room}" />
+									<c:out value="${message.mailFrom}" /> 
 								</td>
 								<c:set var="countCell" value="${(rangeTimeMessage*2)/timeSpan}" />		
 							</c:when>
@@ -203,9 +202,7 @@
 							<c:when test = "${(j == (numStart * 2)) && (room eq RoomMeeting)}">	
 								<c:set var="rangeTimeMessage" value="${(numEnd - numStart)*timeSpan}"/>
 								<td colspan="${rangeTimeMessage}" class = "cell0">
-									<c:out value="${numStart}" /> 
-									<c:out value="${numEnd}" />
-									<c:out value="${room}" />
+									<c:out value="${message.mailFrom}" /> 
 								</td>
 								<c:set var="countCell" value="${(rangeTimeMessage*2)/timeSpan}" />		
 							</c:when>

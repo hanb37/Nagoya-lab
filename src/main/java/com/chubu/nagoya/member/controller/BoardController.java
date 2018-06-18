@@ -56,8 +56,8 @@ public class BoardController {
 		SimpleDateFormat dateFormatJP = new SimpleDateFormat("yyyy年MM月dd日");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
-		if (day.contains("back")) {
-			String dayCur = day.replaceAll("back", "");
+		if (day.contains("前")) {
+			String dayCur = day.replaceAll("前", "");
 			//decrease date
 			Date dateCurrent = dateFormatJP.parse(dayCur);
 			Calendar cal = Calendar.getInstance(); 
@@ -66,7 +66,7 @@ public class BoardController {
 			date = cal.getTime();
 			
 		} else {
-			String dayCur = day.replaceAll("next", "");
+			String dayCur = day.replaceAll("次", "");
 			//increase date
 			Date dateCurrent = dateFormatJP.parse(dayCur);
 			Calendar cal = Calendar.getInstance(); 
@@ -81,9 +81,7 @@ public class BoardController {
 		Date dateCur =  dateFormat.parse(dateFormat.format(date));
 		//get list by date current
 		List<BoardVO> list = boardService.listAll(dateCur);
-		
-		Timestamp timestamp = Timestamp.valueOf("2018-06-08 16:00:00");
-		List<MessageInfo> listMessages = boardService.listMessages(timestamp);
+		List<MessageInfo> listMessages = boardService.listMessages(dateCur);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("board/board_list");
